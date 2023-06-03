@@ -1,0 +1,45 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.ShakeImageWithScrollItem {
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ShakeImageWithScrollItem>div {
+    min-width: 400px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.ShakeImageWithScrollItem>div>img {
+    width: 350px;
+    height: auto;
+}
+
+@media only screen and (max-width: 400px) {
+    .ShakeImageWithScrollItem>div {
+        min-width: 300px;
+        max-width: 300px;
+    }
+
+    .ShakeImageWithScrollItem>div>img {
+        width: 250px;
+        height: auto;
+    }
+}
+
+.ShakeImageWithScrollContainer{
+    display: flex;
+    flex-direction: column;
+}

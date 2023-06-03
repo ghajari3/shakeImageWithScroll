@@ -1,0 +1,14 @@
+:root {
+    --backColor: #cfcfcf;
+    --backColorShadow: #cfcfcf91;
+    --backColorHover: #000000;
+    --textColor: #222222;
+}
+
+.sectionColor:nth-child(odd) {
+    background-color: var(--backColorHover);
+}
+
+.sectionColor {
+    background-color: var(--backColor);
+}

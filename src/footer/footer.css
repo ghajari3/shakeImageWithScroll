@@ -1,0 +1,17 @@
+.myFooter{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    color: var(--textColor) ;
+    padding: 5px 0px 5px 0px !important;
+    margin: 0 !important;
+}
+.myFooter>div{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.myFooter a{
+    color: var(--textColor) ;
+}
