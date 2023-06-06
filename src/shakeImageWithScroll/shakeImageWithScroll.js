@@ -8,7 +8,7 @@ const ShakeImageWithScroll = (props) => {
 
     const innerSize = useSelector((state) => state.windowInnerSize.value)
 
-    const [picLogo, setPicLogo] = useState(0)
+    const [imageIndex, setImageIndex] = useState(0)
 
     const [position, setPosition] = useState("fixed")
     const [justifyContent, setJustifyContent] = useState("flex-start")
@@ -16,7 +16,7 @@ const ShakeImageWithScroll = (props) => {
     const [height] = useState(((props.item.length * props.item.distance) - props.item.distance))
 
     const setId = () => {
-        return `pmAnimationLogo${props.item.id}`;
+        return `imageItem${props.item.id}`;
     };
 
     const startItem = () => {
@@ -31,31 +31,31 @@ const ShakeImageWithScroll = (props) => {
         return height + innerSize.height;
     };
 
-    const lastLogoItem = () => {
+    const lastImage = () => {
         return Math.floor(props.item.length - 1);
     };
 
-    const setLogoItem = () => {
+    const setImage = () => {
         return Math.floor((scrollY - startItem()) / props.item.distance);
     };
 
-    const handleSetPicLogo = (input) => {
-        setPicLogo(input);
+    const handleSetImageIndex = (input) => {
+        setImageIndex(input);
     };
 
     useEffect(() => {
         if (scrollY < startItem()) {
-            handleSetPicLogo(0)
+            handleSetImageIndex(0)
             setPosition("relative")
             setJustifyContent("flex-start")
         }
         else if (scrollY > EndItem()) {
-            handleSetPicLogo(lastLogoItem())
+            handleSetImageIndex(lastImage())
             setPosition("relative")
             setJustifyContent("flex-end")
         }
         else {
-            handleSetPicLogo(setLogoItem())
+            handleSetImageIndex(setImage())
             setPosition("fixed")
             setJustifyContent("flex-start")
         }
@@ -81,7 +81,7 @@ const ShakeImageWithScroll = (props) => {
                     zIndex: props.item.index
                 }}>
                 <div>
-                    <img src={process.env.PUBLIC_URL + `${props.item.id}/${picLogo}${props.item.formatFile}`}></img>
+                    <img src={process.env.PUBLIC_URL + `${props.item.id}/${imageIndex}${props.item.formatFile}`}></img>
                 </div>
             </div>
         </div>
