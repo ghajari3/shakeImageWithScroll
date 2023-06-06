@@ -39,10 +39,6 @@ const ShakeImageWithScroll = (props) => {
         return Math.floor((scrollY - startItem()) / props.item.distance);
     };
 
-    const handleSetImageIndex = (input) => {
-        setImageIndex(input);
-    };
-
     const images = () => {
         let menuItems = [];
 
@@ -55,17 +51,17 @@ const ShakeImageWithScroll = (props) => {
 
     useEffect(() => {
         if (scrollY < startItem()) {
-            handleSetImageIndex(0)
+            setImageIndex(0)
             setPosition("relative")
             setJustifyContent("flex-start")
         }
         else if (scrollY > EndItem()) {
-            handleSetImageIndex(lastImage())
+            setImageIndex(lastImage())
             setPosition("relative")
             setJustifyContent("flex-end")
         }
         else {
-            handleSetImageIndex(setImage())
+            setImageIndex(setImage())
             setPosition("fixed")
             setJustifyContent("flex-start")
         }
