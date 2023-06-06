@@ -43,6 +43,16 @@ const ShakeImageWithScroll = (props) => {
         setImageIndex(input);
     };
 
+    const images = () => {
+        let menuItems = [];
+
+        for (var i = 0; i < props.item.length; i++) {
+            menuItems.push(<img style={{ display: imageIndex != i ? "none" : "block" }} src={process.env.PUBLIC_URL + `${props.item.id}/${i}${props.item.formatFile}`}></img>)
+        }
+
+        return <div>{menuItems}</div>;
+    }
+
     useEffect(() => {
         if (scrollY < startItem()) {
             handleSetImageIndex(0)
@@ -59,9 +69,7 @@ const ShakeImageWithScroll = (props) => {
             setPosition("fixed")
             setJustifyContent("flex-start")
         }
-
         return () => {
-
             return "";
         }
     }, [scrollY, innerSize]);
@@ -80,9 +88,7 @@ const ShakeImageWithScroll = (props) => {
                     position: position,
                     zIndex: props.item.index
                 }}>
-                <div>
-                    <img src={process.env.PUBLIC_URL + `${props.item.id}/${imageIndex}${props.item.formatFile}`}></img>
-                </div>
+                {images()}
             </div>
         </div>
     )
