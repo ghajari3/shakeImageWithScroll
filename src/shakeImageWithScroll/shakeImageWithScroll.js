@@ -10,8 +10,8 @@ const ShakeImageWithScroll = (props) => {
 
     const [imageIndex, setImageIndex] = useState(0)
 
-    const [position, setPosition] = useState("fixed")
-    const [justifyContent, setJustifyContent] = useState("flex-start")
+    const [itemPosition, setItemPosition] = useState("fixed")
+    const [containerJustifyContent, setContainerJustifyContent] = useState("flex-start")
 
     const [height] = useState(((props.item.length * props.item.distance) - props.item.distance))
 
@@ -52,18 +52,18 @@ const ShakeImageWithScroll = (props) => {
     useEffect(() => {
         if (scrollY < startItem()) {
             setImageIndex(0)
-            setPosition("relative")
-            setJustifyContent("flex-start")
+            setItemPosition("relative")
+            setContainerJustifyContent("flex-start")
         }
         else if (scrollY > EndItem()) {
             setImageIndex(lastImage())
-            setPosition("relative")
-            setJustifyContent("flex-end")
+            setItemPosition("relative")
+            setContainerJustifyContent("flex-end")
         }
         else {
             setImageIndex(setImage())
-            setPosition("fixed")
-            setJustifyContent("flex-start")
+            setItemPosition("fixed")
+            setContainerJustifyContent("flex-start")
         }
         return () => {
             return "";
@@ -75,13 +75,13 @@ const ShakeImageWithScroll = (props) => {
             style={{
                 height: itemScrollHeight(),
                 minHeight: itemScrollHeight(),
-                justifyContent: justifyContent,
+                justifyContent: containerJustifyContent,
                 backgroundColor: props.item.backColor
             }}
             id={setId()}>
             <div className="ShakeImageWithScrollItem"
                 style={{
-                    position: position,
+                    position: itemPosition,
                     zIndex: props.item.index
                 }}>
                 {images()}
