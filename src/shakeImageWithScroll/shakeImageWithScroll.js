@@ -47,7 +47,7 @@ const ShakeImageWithScroll = (props) => {
         let menuItems = [];
 
         for (var i = 0; i < props.item.length; i++) {
-            menuItems.push(<img style={{ display: imageIndex != i ? "none" : "block" }} src={process.env.PUBLIC_URL + `${props.item.id}/${i}${props.item.formatFile}`}></img>)
+            menuItems.push(<img style={{ display: imageIndex != i ? "none" : "inline-block" }} src={process.env.PUBLIC_URL + `${props.item.id}/${i}${props.item.formatFile}`}></img>)
         }
 
         return <div>{menuItems}</div>;
